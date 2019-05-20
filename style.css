@@ -1,0 +1,48 @@
+.statistiche_giocatori {
+  display: none;
+}
+
+h1 {
+  color: green;
+  font-size: 25px;
+  line-height: 35px;
+}
+
+h2 {
+  color: green;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 30px;
+}
+
+h2 span {
+  color: red;
+  font-size: 120%;
+}
+
+.lista {
+  width: 200px;
+  height: 200px;
+  overflow: auto;
+}
+
+
+#lista-giocatori {
+  width: 200px;
+  height: 300px;
+  overflow: auto;
+  float:left;
+  margin-right: 50px;
+  padding-left: 50px;
+}
+
+.giocatore {
+  list-style-type: none;
+}
+
+.giocatore a {
+  text-decoration: none;
+  color: black;
+  display: block;
+  margin-bottom: 10px;
+}
