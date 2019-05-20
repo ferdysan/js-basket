@@ -1,23 +1,54 @@
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding:0;
+}
+
+body{
+  width: 100vw;
+  height: 100vh;
+  display:flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Baloo Bhai', cursive;
+  background: url('basket.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+
+}
+
+.container{
+  width: 500px;
+  height: 400px;
+  background-color: #00000087;
+  border: 2px dotted white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .statistiche_giocatori {
   display: none;
 }
 
 h1 {
-  color: green;
+  color: black;
   font-size: 25px;
-  line-height: 35px;
+  
 }
 
 h2 {
-  color: green;
+  color: black;
   font-weight: bold;
   font-size: 20px;
-  line-height: 30px;
+  l
 }
 
 h2 span {
   color: red;
   font-size: 120%;
+
 }
 
 .lista {

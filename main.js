@@ -88,26 +88,52 @@ $(document).ready(function(){
     $('#lista-codici').append(html_finale);
   }
 
+
+
+
+
+  // definisco un template Handlebars per le statistiche giocatori
+   var statistiche_template = $('#template-statistiche').html();
+
+   var lista_function = Handlebars.compile(statistiche_template);
+
+
   $('#lista-codici li a').click(function(){
     //tramite l'indice data univoco dato ad ogni elemento della lista mi vado a recuperare il giocatore corrispondere a quell'indice all'interno dell'array di oggetti
+
+    //rimuovo il template precedente ad ogni click altirmenti si accavallavano ad ogni click tutti i template generati
+    $('.statistiche_giocatori').empty();
+
     var giocatore_selezionato = $(this).attr('data-indice');
 
-    $('.container-codice-giocatore').text(giocatori_basket[giocatore_selezionato].codice);
+    var statistiche_giocatori={
+      'punti_fatti': giocatori_basket[giocatore_selezionato].codice,
+      'rimbalzi' : giocatori_basket[giocatore_selezionato].punti,
+      'falli' : giocatori_basket[giocatore_selezionato].falli,
+      'tiri_2' : giocatori_basket[giocatore_selezionato].tiri2,
+      'tiri_3' : giocatori_basket[giocatore_selezionato].tiri3
+    }
 
-    $('.punti h2 span').text(giocatori_basket[giocatore_selezionato].punti);
+    var html_finale = lista_function(statistiche_giocatori);
+    $('.statistiche_giocatori').append(html_finale);
 
-    $('.rimbalzi h2 span').text(giocatori_basket[giocatore_selezionato].rimbalzi);
 
-    $('.falli h2 span').text(giocatori_basket[giocatore_selezionato].falli);
-
-    $('.tiri_2 h2 span').text(giocatori_basket[giocatore_selezionato].tiri2);
+   //  $('.container-codice-giocatore').text(giocatori_basket[giocatore_selezionato].codice);
    //
-    $('.tiri_3 h2 span').text(giocatori_basket[giocatore_selezionato].tiri3);
+   //  $('.punti h2 span').text(giocatori_basket[giocatore_selezionato].punti);
+   //
+   //  $('.rimbalzi h2 span').text(giocatori_basket[giocatore_selezionato].rimbalzi);
+   //
+   //  $('.falli h2 span').text(giocatori_basket[giocatore_selezionato].falli);
+   //
+   //  $('.tiri_2 h2 span').text(giocatori_basket[giocatore_selezionato].tiri2);
+   // //
+   //  $('.tiri_3 h2 span').text(giocatori_basket[giocatore_selezionato].tiri3);
 
     $('.statistiche_giocatori').show();
-
-
   });
+
+
 
 
 
