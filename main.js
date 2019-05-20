@@ -15,7 +15,7 @@
 
 var caratteri ='ABCDEFGHILMNOPQRSTUVZ';
 //definisco un array in cui andrò ad inserire i 100 giocatori generati casualmente dalla mia funzione genera giocatore
-var giocatori_basket =[];
+var codici_giocatore =[];
 
 
 // elaboro la funzione per la creazione del Giocatore
@@ -36,6 +36,8 @@ function genera_giocatore (){
     //alla variabile giocatore ora concateno 3 numeri
    codice_giocatore += generatoreRandom(0, 9);
   }
+
+  codici_giocatore.push(codice_giocatore);
 
   //genero 3 variabili per le statistiche giocatore
   var punti_fatti = generatoreRandom(0,100);
@@ -58,11 +60,42 @@ function genera_giocatore (){
   return giocatore
 }
 
+var giocatori_basket =[];
+//genero quindi 100 oggetti giocatore con un for
 for(var i=0; i< 100; i++){
   var giocatore = genera_giocatore();
   giocatori_basket.push(giocatore);
 }
-console.log(giocatori_basket)
+console.log(giocatori_basket);
+
+//inserisci nella lista un item per ciascun giocatore inserendovi il codice relativo
+for(var i=0; i < giocatori_basket.length; i++){
+  var elemento= '<li class="giocatore">';
+  elemento += '<a href="#" data-indice="' + i +'">'+ giocatori_basket[i].codice +'</a>'+'</li>';
+  //inserisco l'elemento creato nella lista codici Giocatore
+  $('#lista-giocatori').append(elemento);
+}
+
+
+$('#lista-giocatori li a').click(function(){
+  //tramite l'indice data univoco dato ad ogni elemento della lista mi vado a recuperare il giocatore corrispondere a quell'indice all'interno dell'array di oggetti
+  var giocatore_selezionato = $(this).attr('data-indice');
+
+  $('.container-codice-giocatore').text(giocatori_basket[giocatore_selezionato].codice);
+
+  $('.punti h2 span').text(giocatori_basket[giocatore_selezionato].punti);
+
+  $('.rimbalzi h2 span').text(giocatori_basket[giocatore_selezionato].rimbalzi);
+
+  $('.falli h2 span').text(giocatori_basket[giocatore_selezionato].falli);
+
+  $('.tiri_2 h2 span').text(giocatori_basket[giocatore_selezionato].tiri2);
+ // 
+  $('.tiri_3 h2 span').text(giocatori_basket[giocatore_selezionato].tiri3);
+
+
+});
+
 
 
 //Funzione genera random
